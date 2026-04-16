@@ -1,0 +1,1099 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lado B Nutrición | Palermo, CABA</title>
+<meta name="description" content="Centro de nutrición en Palermo, CABA. Análisis de composición corporal con tecnología InBody. Planes personalizados. Turnos presenciales y online.">
+<link rel="icon" type="image/png" href="images/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-375545816"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'AW-375545816');
+gtag('config', 'G-CQ0ME5ZH41');
+function gtag_report_conversion(url) {
+  gtag('event', 'conversion', {
+    'send_to': 'AW-375545816/3GrmCJj71IYcENi_ibMB',
+    'event_callback': function() {
+      if (typeof(url) != 'undefined') {
+        window.open(url, '_blank');
+      }
+    }
+  });
+  return false;
+}
+</script>
+<style>
+@font-face {
+  font-family: 'LemonMilk';
+  src: url('fonts/LEMONMILK-Bold.otf') format('opentype');
+  font-weight: bold;
+  font-style: normal;
+}
+:root {
+  --cream: #faf7f4;
+  --blush: #f5ede8;
+  --terracotta: #c96a4a;
+  --terracotta-light: #e8906f;
+  --dark: #1a1a1a;
+  --text: #3a3a3a;
+  --lime: #c8e63c;
+  --white: #ffffff;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  color: var(--text);
+  background: var(--white);
+  overflow-x: hidden;
+}
+
+/* NAV */
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  background: var(--dark);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 5%;
+  height: 70px;
+  transition: box-shadow .3s;
+}
+
+nav.scrolled { box-shadow: 0 2px 20px rgba(0,0,0,.15); }
+
+.nav-logo img {
+  height: 48px;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  list-style: none;
+}
+
+.nav-links li {
+  display: flex;
+  align-items: center;
+}
+
+.nav-links li + li::before {
+  content: '';
+  width: 1px;
+  height: 14px;
+  background: #444;
+  margin: 0 .75rem;
+}
+
+.nav-links a {
+  color: #ccc;
+  text-decoration: none;
+  font-size: .75rem;
+  font-weight: 400;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+  transition: color .2s;
+}
+
+.nav-links a:hover { color: var(--terracotta-light); font-weight: 400; }
+
+.nav-cta {
+  background: rgba(37,211,102,.75) !important;
+  color: white !important;
+  padding: .45rem 1.2rem;
+  border-radius: 20px;
+  font-weight: 500 !important;
+  backdrop-filter: blur(4px);
+}
+
+.nav-cta:hover { background: rgba(37,211,102,.9) !important; color: white !important; }
+
+/* HAMBURGER */
+.hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; }
+.hamburger span { width: 24px; height: 2px; background: white; transition: .3s; }
+
+/* HERO */
+#inicio {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--white);
+  box-shadow: 0 8px 24px rgba(0,0,0,.06);
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+}
+
+.hero-bg-layer {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at 70% 50%, rgba(201,106,74,.07) 0%, transparent 60%),
+              radial-gradient(ellipse at 20% 80%, rgba(201,106,74,.05) 0%, transparent 50%);
+  z-index: 0;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+  text-align: center;
+  opacity: 0;
+}
+
+.hero-logo-img {
+  max-width: 220px;
+  width: auto;
+}
+
+.hero-tagline {
+  font-size: .85rem;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  color: #999;
+  opacity: 0;
+}
+
+.hero-cta {
+  opacity: 0;
+  transform: translateY(10px);
+}
+
+.hero-scroll {
+  position: absolute;
+  bottom: 2.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: .5rem;
+  opacity: 0;
+  font-size: .7rem;
+  letter-spacing: .15em;
+  text-transform: uppercase;
+  color: #aaa;
+}
+
+.hero-scroll::after {
+  content: '';
+  width: 1px;
+  height: 40px;
+  background: var(--terracotta);
+  animation: scrollLine 2s infinite;
+}
+
+@keyframes scrollLine {
+  0% { transform: scaleY(0); transform-origin: top; }
+  50% { transform: scaleY(1); transform-origin: top; }
+  51% { transform: scaleY(1); transform-origin: bottom; }
+  100% { transform: scaleY(0); transform-origin: bottom; }
+}
+
+/* SECTIONS */
+section { padding: 4rem 5%; }
+section[id] { scroll-margin-top: 70px; }
+
+.section-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 3rem;
+  color: var(--dark);
+}
+
+/* FADE IN ANIMATION */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity .8s ease, transform .8s ease;
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* QUIÉNES SOMOS */
+#quienes {
+  background-color: var(--white);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Ccircle cx='71' cy='43' r='1.2' fill='%23c8c8c8' opacity='0.65'/%3E%3Ccircle cx='203' cy='67' r='1.5' fill='%23d0d0d0' opacity='0.55'/%3E%3Ccircle cx='338' cy='19' r='1' fill='%23c4c4c4' opacity='0.6'/%3E%3Ccircle cx='29' cy='131' r='1.4' fill='%23cccccc' opacity='0.5'/%3E%3Ccircle cx='157' cy='158' r='1.1' fill='%23c8c8c8' opacity='0.65'/%3E%3Ccircle cx='289' cy='143' r='1.6' fill='%23d2d2d2' opacity='0.5'/%3E%3Ccircle cx='383' cy='167' r='1.3' fill='%23c6c6c6' opacity='0.6'/%3E%3Ccircle cx='112' cy='223' r='1' fill='%23cacaca' opacity='0.55'/%3E%3Ccircle cx='247' cy='209' r='1.5' fill='%23c8c8c8' opacity='0.6'/%3E%3Ccircle cx='361' cy='251' r='1.2' fill='%23d0d0d0' opacity='0.5'/%3E%3Ccircle cx='54' cy='278' r='1.4' fill='%23c4c4c4' opacity='0.65'/%3E%3Ccircle cx='178' cy='302' r='1.1' fill='%23cccccc' opacity='0.55'/%3E%3Ccircle cx='319' cy='319' r='1.3' fill='%23c8c8c8' opacity='0.6'/%3E%3Ccircle cx='23' cy='361' r='1' fill='%23d2d2d2' opacity='0.5'/%3E%3Ccircle cx='143' cy='377' r='1.6' fill='%23c6c6c6' opacity='0.6'/%3E%3Ccircle cx='271' cy='389' r='1.2' fill='%23cacaca' opacity='0.55'/%3E%3Ccircle cx='391' cy='347' r='1.4' fill='%23c8c8c8' opacity='0.65'/%3E%3Ccircle cx='89' cy='97' r='1.1' fill='%23d0d0d0' opacity='0.5'/%3E%3Ccircle cx='224' cy='83' r='1.3' fill='%23c4c4c4' opacity='0.6'/%3E%3Ccircle cx='347' cy='113' r='1' fill='%23cccccc' opacity='0.55'/%3E%3C/svg%3E");
+  background-size: 400px 400px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: center;
+  padding: 5rem 8%;
+}
+
+.quienes-text h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2rem, 3.5vw, 2.8rem);
+  margin-bottom: 2rem;
+  color: var(--dark);
+}
+
+.quienes-text p {
+  font-size: 1rem;
+  line-height: 1.85;
+  color: var(--text);
+  margin-bottom: 1.25rem;
+}
+
+.quienes-gallery {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  gap: .75rem;
+  height: 480px;
+}
+
+.gallery-main {
+  height: 100%;
+  overflow: hidden;
+  border-radius: 8px;
+}
+
+.gallery-main img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform .6s ease;
+}
+
+.gallery-main:hover img { transform: scale(1.04); }
+
+.gallery-side {
+  display: flex;
+  flex-direction: column;
+  gap: .75rem;
+  height: 100%;
+}
+
+.gallery-side img {
+  width: 100%;
+  flex: 1;
+  object-fit: cover;
+  border-radius: 8px;
+  transition: transform .6s ease;
+  min-height: 0;
+}
+
+.gallery-side img:hover { transform: scale(1.04); }
+
+/* TURNO */
+#turno {
+  background: var(--dark);
+  text-align: center;
+  padding: 4rem 5%;
+}
+
+#turno h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2rem, 4vw, 3rem);
+  color: var(--white);
+  margin-bottom: 1.2rem;
+}
+
+#turno p {
+  color: #aaa;
+  font-size: 1.05rem;
+  margin-bottom: 1.2rem;
+  max-width: 650px;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 2;
+}
+
+.btn-wa {
+  display: inline-flex;
+  align-items: center;
+  gap: .75rem;
+  background: #25d366;
+  color: white;
+  text-decoration: none;
+  padding: 1rem 2.5rem;
+  border-radius: 20px;
+  font-size: 1rem;
+  font-weight: 500;
+  transition: transform .2s, box-shadow .2s;
+}
+
+.btn-wa:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(37,211,102,.35);
+}
+
+.btn-wa svg { width: 22px; height: 22px; fill: white; }
+
+/* CÓMO TRABAJAMOS */
+#como {
+  background-color: var(--blush);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Ccircle cx='53' cy='71' r='1.4' fill='%23c96a4a' opacity='0.12'/%3E%3Ccircle cx='189' cy='18' r='1.1' fill='%23c96a4a' opacity='0.09'/%3E%3Ccircle cx='312' cy='89' r='1.6' fill='%23c96a4a' opacity='0.1'/%3E%3Ccircle cx='97' cy='163' r='1' fill='%23c96a4a' opacity='0.13'/%3E%3Ccircle cx='241' cy='147' r='1.3' fill='%23c96a4a' opacity='0.08'/%3E%3Ccircle cx='378' cy='134' r='1.2' fill='%23c96a4a' opacity='0.11'/%3E%3Ccircle cx='29' cy='234' r='1.5' fill='%23c96a4a' opacity='0.09'/%3E%3Ccircle cx='163' cy='218' r='1.1' fill='%23c96a4a' opacity='0.12'/%3E%3Ccircle cx='347' cy='267' r='1.3' fill='%23c96a4a' opacity='0.1'/%3E%3Ccircle cx='78' cy='301' r='1' fill='%23c96a4a' opacity='0.13'/%3E%3Ccircle cx='215' cy='289' r='1.6' fill='%23c96a4a' opacity='0.08'/%3E%3Ccircle cx='389' cy='312' r='1.2' fill='%23c96a4a' opacity='0.11'/%3E%3Ccircle cx='134' cy='367' r='1.4' fill='%23c96a4a' opacity='0.09'/%3E%3Ccircle cx='278' cy='351' r='1.1' fill='%23c96a4a' opacity='0.12'/%3E%3Ccircle cx='41' cy='389' r='1.3' fill='%23c96a4a' opacity='0.1'/%3E%3Ccircle cx='321' cy='383' r='1' fill='%23c96a4a' opacity='0.13'/%3E%3Ccircle cx='267' cy='47' r='1.5' fill='%23c96a4a' opacity='0.09'/%3E%3Ccircle cx='141' cy='93' r='1.2' fill='%23c96a4a' opacity='0.11'/%3E%3Ccircle cx='356' cy='198' r='1.1' fill='%23c96a4a' opacity='0.1'/%3E%3Ccircle cx='189' cy='334' r='1.4' fill='%23c96a4a' opacity='0.08'/%3E%3C/svg%3E");
+  background-size: 400px 400px;
+  text-align: center;
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.card {
+  background: var(--white);
+  padding: 2.5rem 2rem;
+  border-radius: 4px;
+  text-align: left;
+  transition: background .3s, color .3s, transform .2s;
+  cursor: default;
+}
+
+.card:hover, .card.active {
+  background: var(--terracotta);
+  transform: translateY(-4px);
+}
+
+.card:hover h3, .card.active h3,
+.card:hover p, .card.active p { color: white; }
+
+.card h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.25rem;
+  margin-bottom: 1rem;
+  color: var(--dark);
+  transition: color .3s;
+}
+
+.card p {
+  font-size: .9rem;
+  line-height: 1.75;
+  color: var(--text);
+  transition: color .3s;
+}
+
+/* INBODY */
+#inbody {
+  background-color: var(--white);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Ccircle cx='37' cy='83' r='1.3' fill='%23cacaca' opacity='0.7'/%3E%3Ccircle cx='112' cy='21' r='1' fill='%23c8c8c8' opacity='0.6'/%3E%3Ccircle cx='289' cy='57' r='1.5' fill='%23d0d0d0' opacity='0.5'/%3E%3Ccircle cx='178' cy='134' r='1.1' fill='%23c4c4c4' opacity='0.65'/%3E%3Ccircle cx='341' cy='110' r='1.3' fill='%23cccccc' opacity='0.6'/%3E%3Ccircle cx='63' cy='197' r='1' fill='%23c8c8c8' opacity='0.55'/%3E%3Ccircle cx='220' cy='178' r='1.6' fill='%23d2d2d2' opacity='0.5'/%3E%3Ccircle cx='377' cy='203' r='1.2' fill='%23c6c6c6' opacity='0.65'/%3E%3Ccircle cx='145' cy='267' r='1' fill='%23cacaca' opacity='0.6'/%3E%3Ccircle cx='310' cy='249' r='1.4' fill='%23c8c8c8' opacity='0.55'/%3E%3Ccircle cx='19' cy='312' r='1.5' fill='%23d0d0d0' opacity='0.5'/%3E%3Ccircle cx='253' cy='321' r='1.1' fill='%23c4c4c4' opacity='0.6'/%3E%3Ccircle cx='88' cy='358' r='1.3' fill='%23cccccc' opacity='0.65'/%3E%3Ccircle cx='393' cy='341' r='1' fill='%23c8c8c8' opacity='0.55'/%3E%3Ccircle cx='167' cy='389' r='1.4' fill='%23d2d2d2' opacity='0.5'/%3E%3Ccircle cx='328' cy='377' r='1.2' fill='%23c6c6c6' opacity='0.6'/%3E%3Ccircle cx='201' cy='43' r='1' fill='%23cacaca' opacity='0.65'/%3E%3Ccircle cx='356' cy='29' r='1.5' fill='%23c8c8c8' opacity='0.55'/%3E%3Ccircle cx='134' cy='155' r='1.1' fill='%23d0d0d0' opacity='0.5'/%3E%3Ccircle cx='275' cy='143' r='1.3' fill='%23c4c4c4' opacity='0.6'/%3E%3C/svg%3E");
+  background-size: 400px 400px;
+  text-align: center;
+}
+
+.video-wrapper {
+  position: relative;
+  max-width: 760px;
+  margin: 0 auto;
+  border-radius: 12px;
+  overflow: hidden;
+  cursor: pointer;
+  box-shadow: 0 8px 40px rgba(201,106,74,.18), 0 2px 12px rgba(0,0,0,.10);
+  border: 1.5px solid rgba(201,106,74,.25);
+  outline: 6px solid rgba(201,106,74,.07);
+  outline-offset: 4px;
+}
+
+.video-thumb {
+  width: 100%;
+  aspect-ratio: 16/9;
+  object-fit: cover;
+  display: block;
+  filter: brightness(.85);
+  transition: filter .3s;
+}
+
+.video-wrapper:hover .video-thumb { filter: brightness(.7); }
+
+.play-btn {
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  width: 74px; height: 74px;
+  background: rgba(255,255,255,.85);
+  backdrop-filter: blur(4px);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform .2s, background .2s;
+  animation: pulsPlay 2s infinite;
+}
+
+@keyframes pulsPlay {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(201,106,74,.4); }
+  50% { box-shadow: 0 0 0 16px rgba(201,106,74,0); }
+}
+
+.video-wrapper:hover .play-btn {
+  transform: translate(-50%, -50%) scale(1.1);
+  background: white;
+  animation: none;
+}
+
+.play-btn svg { width: 28px; height: 28px; fill: var(--terracotta); margin-left: 4px; }
+
+.video-embed { display: none; width: 100%; aspect-ratio: 16/9; border: none; }
+
+/* STATS */
+#stats {
+  background: var(--dark);
+  padding: 3.5rem 5%;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.stat-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: .6rem;
+  padding: 0 2rem;
+  border-right: 1px solid #333;
+}
+
+.stat-item:last-child { border-right: none; }
+
+.stat-item svg {
+  width: 32px;
+  height: 32px;
+  color: var(--terracotta);
+  margin-bottom: .3rem;
+}
+
+.stat-number {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.4rem, 2.5vw, 2rem);
+  color: var(--white);
+  font-weight: 700;
+  line-height: 1;
+}
+
+.stat-label {
+  font-size: .8rem;
+  color: #aaa;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  text-align: center;
+}
+
+/* TESTIMONIOS */
+#testimonios {
+  background-color: var(--blush);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Ccircle cx='17' cy='58' r='1.5' fill='%23c96a4a' opacity='0.1'/%3E%3Ccircle cx='143' cy='29' r='1.1' fill='%23c96a4a' opacity='0.13'/%3E%3Ccircle cx='274' cy='71' r='1.4' fill='%23c96a4a' opacity='0.09'/%3E%3Ccircle cx='381' cy='43' r='1.2' fill='%23c96a4a' opacity='0.11'/%3E%3Ccircle cx='62' cy='134' r='1' fill='%23c96a4a' opacity='0.12'/%3E%3Ccircle cx='198' cy='118' r='1.6' fill='%23c96a4a' opacity='0.08'/%3E%3Ccircle cx='329' cy='152' r='1.3' fill='%23c96a4a' opacity='0.1'/%3E%3Ccircle cx='89' cy='213' r='1.4' fill='%23c96a4a' opacity='0.13'/%3E%3Ccircle cx='231' cy='187' r='1.1' fill='%23c96a4a' opacity='0.09'/%3E%3Ccircle cx='367' cy='229' r='1.5' fill='%23c96a4a' opacity='0.11'/%3E%3Ccircle cx='34' cy='287' r='1.2' fill='%23c96a4a' opacity='0.1'/%3E%3Ccircle cx='167' cy='261' r='1' fill='%23c96a4a' opacity='0.12'/%3E%3Ccircle cx='298' cy='301' r='1.4' fill='%23c96a4a' opacity='0.08'/%3E%3Ccircle cx='113' cy='347' r='1.6' fill='%23c96a4a' opacity='0.13'/%3E%3Ccircle cx='249' cy='371' r='1.1' fill='%23c96a4a' opacity='0.09'/%3E%3Ccircle cx='389' cy='358' r='1.3' fill='%23c96a4a' opacity='0.11'/%3E%3Ccircle cx='54' cy='389' r='1' fill='%23c96a4a' opacity='0.1'/%3E%3Ccircle cx='312' cy='219' r='1.5' fill='%23c96a4a' opacity='0.12'/%3E%3Ccircle cx='178' cy='333' r='1.2' fill='%23c96a4a' opacity='0.09'/%3E%3Ccircle cx='341' cy='97' r='1.1' fill='%23c96a4a' opacity='0.11'/%3E%3C/svg%3E");
+  background-size: 400px 400px;
+  text-align: center;
+}
+
+.testimonial-slider {
+  max-width: 700px;
+  margin: 0 auto;
+  position: relative;
+}
+
+.testimonial {
+  display: none;
+  animation: fadeIn .5s ease;
+  min-height: 180px;
+}
+
+.testimonial.active { display: block; }
+
+@keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+.quote-mark { display: none; }
+
+.testimonial-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.4rem;
+  color: var(--terracotta);
+  margin-bottom: .6rem;
+  font-style: italic;
+}
+
+.testimonial-text {
+  font-size: .95rem;
+  line-height: 1.8;
+  color: var(--text);
+  margin-bottom: 1rem;
+}
+
+.stars { color: #f5a623; font-size: 1.2rem; margin-bottom: 1.5rem; }
+
+.testimonial-author {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.testimonial-author img {
+  width: 52px; height: 52px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid var(--terracotta);
+}
+
+.author-name { font-weight: 500; font-size: .95rem; }
+
+.author-avatar {
+  width: 52px; height: 52px;
+  border-radius: 50%;
+  background: #e8c5b8;
+  border: 2px solid var(--terracotta);
+  flex-shrink: 0;
+}
+
+.slider-nav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+  margin-top: 1.2rem;
+}
+
+.slider-btn {
+  width: 44px; height: 44px;
+  border: 1.5px solid var(--terracotta);
+  background: transparent;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 1.1rem;
+  color: var(--terracotta);
+  transition: background .2s, color .2s;
+}
+
+.slider-btn:hover { background: var(--terracotta); color: white; }
+
+.slider-dots { display: flex; gap: .5rem; }
+
+.dot {
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  background: #d4b5a8;
+  cursor: pointer;
+  transition: background .2s;
+}
+
+.dot.active { background: var(--terracotta); }
+
+/* MAPA */
+#donde {
+  background: var(--white);
+  text-align: center;
+}
+
+.donde-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  min-height: 420px;
+}
+
+.donde-info {
+  background: var(--dark);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 4rem 5%;
+}
+
+.donde-info h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.8rem, 3vw, 2.5rem);
+  color: var(--white);
+  margin-bottom: 2.5rem;
+  letter-spacing: .05em;
+}
+
+.donde-links {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.donde-link {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  color: #ccc;
+  text-decoration: none;
+  font-size: 1rem;
+  transition: color .2s;
+}
+
+.donde-link:hover { color: var(--white); }
+
+.donde-link svg {
+  width: 28px;
+  height: 28px;
+  flex-shrink: 0;
+}
+
+.donde-map iframe {
+  width: 100%;
+  height: 100%;
+  min-height: 420px;
+  border: none;
+  display: block;
+}
+
+/* FOOTER */
+footer {
+  background: var(--dark);
+  color: #888;
+  text-align: center;
+  padding: 2rem 5%;
+  font-size: .8rem;
+}
+
+footer a { color: var(--lime); text-decoration: none; }
+
+/* WHATSAPP FLOAT */
+.wa-float {
+  position: fixed;
+  bottom: 1.75rem;
+  right: 1.75rem;
+  z-index: 200;
+  width: 54px; height: 54px;
+  background: #25d366;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 16px rgba(37,211,102,.4);
+  transition: transform .2s;
+}
+
+.wa-float:hover { transform: scale(1.1); }
+.wa-float svg { width: 28px; height: 28px; fill: white; }
+
+/* MOBILE */
+@media (max-width: 768px) {
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 70px; left: 0; right: 0;
+    background: var(--dark);
+    padding: 1.5rem 6%;
+    gap: 1.25rem;
+  }
+  .nav-links.open { display: flex; }
+  .nav-links li::before { display: none; }
+  .nav-links a { font-size: .9rem; }
+  .nav-cta { background: #25d366 !important; display: inline-block; width: fit-content; }
+
+  .hamburger { display: flex; }
+
+  /* Reemplazar hamburger por botón "Menú" naranja */
+  .hamburger {
+    background: var(--terracotta);
+    border: none;
+    color: white;
+    font-family: 'DM Sans', sans-serif;
+    font-size: .8rem;
+    font-weight: 500;
+    letter-spacing: .05em;
+    text-transform: uppercase;
+    padding: .45rem 1rem;
+    border-radius: 20px;
+    cursor: pointer;
+    align-items: center;
+    gap: .4rem;
+  }
+  .hamburger span { display: none; }
+  .hamburger::before { content: 'Menú'; }
+
+  #quienes { grid-template-columns: 1fr; padding: 3rem 6%; }
+  .quienes-gallery { height: 320px; }
+  .cards { grid-template-columns: 1fr; }
+  section { padding: 3rem 6%; }
+  .donde-grid { grid-template-columns: 1fr; }
+  .donde-map iframe { min-height: 300px; }
+  .stats-grid { grid-template-columns: 1fr; gap: 2rem; }
+  .stat-item { border-right: none; border-bottom: 1px solid #333; padding-bottom: 2rem; }
+  .stat-item:last-child { border-bottom: none; padding-bottom: 0; }
+  #turno p { white-space: normal !important; font-size: .95rem; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="navbar">
+  <a class="nav-logo" href="#inicio">
+    <!-- Reemplazá src con la URL de tu logo en GitHub -->
+    <img src="images/logoLB.png" alt="Lado B Nutrición">
+  </a>  <ul class="nav-links" id="navLinks">
+    <li><a href="#inbody">InBody</a></li>
+    <li><a href="#como">Cómo trabajamos</a></li>
+    <li><a href="#quienes">Nosotros</a></li>
+    <li><a href="#testimonios">Testimonios</a></li>
+    <li><a href="#donde">Encontranos</a></li>
+    <li><a href="https://wa.me/5491159113151?text=Hola%21+Me+gustar%C3%ADa+tener+una+consulta%21" target="_blank" onclick="gtag_report_conversion(this.href); return false;" class="nav-cta">Reservá tu turno</a></li>
+  </ul>
+  <div class="hamburger" id="hamburger" onclick="toggleMenu()">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="inicio" style="position:relative; overflow:hidden;">
+  <div class="hero-bg-layer"></div>
+  <div class="hero-content">
+    <img class="hero-logo-img" src="images/logoLN.png" alt="Lado B Nutrición">
+    <p class="hero-tagline">Nutrición consciente · Resultados reales</p>
+    <a class="hero-cta btn-wa" href="https://wa.me/5491159113151?text=Hola%21+Me+gustar%C3%ADa+tener+una+consulta%21" target="_blank" onclick="gtag_report_conversion(this.href); return false;">
+      <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.125.554 4.122 1.528 5.855L.057 23.882l6.233-1.635A11.945 11.945 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.006-1.368l-.36-.213-3.7.971.987-3.608-.234-.371A9.818 9.818 0 1112 21.818z"/></svg>
+      Reservá tu turno
+    </a>
+  </div>
+  <div class="hero-scroll">conocenos</div>
+</section>
+
+<!-- CONOCENOS (ex INBODY) -->
+<section id="inbody">
+  <h2 class="section-title reveal">Comenzá tu cambio</h2>
+  <p class="reveal" style="text-align:center; max-width:900px; white-space:nowrap; margin: -2.5rem auto 2rem; font-size:1rem; line-height:1.85; color:var(--text);">Conocé tu verdadera composición corporal con nuestro sistema <strong>InBody</strong> y armá un plan a tu medida.</p>
+  <div class="video-wrapper reveal" id="videoWrapper" onclick="playVideo()">
+    <img class="video-thumb" src="images/previainbody.png" alt="Video InBody">
+    <div class="play-btn">
+      <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+    </div>
+    <iframe class="video-embed" id="videoEmbed" allow="autoplay" allowfullscreen></iframe>
+  </div>
+</section>
+
+<!-- CÓMO TRABAJAMOS -->
+<section id="como">
+  <h2 class="section-title reveal">Cómo trabajamos</h2>
+  <div class="cards">
+    <div class="card reveal">
+      <h3>Analizamos tu composición corporal</h3>
+      <p>A través de un sistema de bioimpedancia obtenemos en detalle <strong>peso, masa grasa, masa muscular, índice de masa corporal, grasa segmental, control de peso (peso ideal)</strong>, entre otros resultados.</p>
+    </div>
+    <div class="card reveal">
+      <h3>Planteamos tu objetivo personalizado</h3>
+      <p>A partir de los resultados definimos un <strong>objetivo realista</strong> y alcanzable según tus necesidades y estilo de vida, ya sea <strong>bajar grasa, aumentar masa muscular, mejorar el rendimiento o cuidar tu salud.</strong></p>
+    </div>
+    <div class="card reveal">
+      <h3>Armamos un plan nutricional a tu medida</h3>
+      <p>Diseñamos un plan nutricional 100% personalizado, <strong>adaptado a tu objetivo, gustos, rutina y contexto</strong>. No se trata de dietas genéricas, sino de una <strong>estrategia práctica y sostenible en el tiempo</strong>.</p>
+    </div>
+  </div>
+</section>
+
+<!-- RESERVÁ TU TURNO -->
+<section id="turno" class="reveal">
+  <h2>Reservá tu turno</h2>
+  <p style="white-space:nowrap;">Escribinos por WhatsApp para coordinar tu primera consulta o para más información.</p>
+  <a class="btn-wa" href="https://wa.me/5491159113151?text=Hola%21+Me+gustar%C3%ADa+tener+una+consulta%21" target="_blank" onclick="gtag_report_conversion(this.href); return false;">
+    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.125.554 4.122 1.528 5.855L.057 23.882l6.233-1.635A11.945 11.945 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.006-1.368l-.36-.213-3.7.971.987-3.608-.234-.371A9.818 9.818 0 1112 21.818z"/></svg>
+    Escribinos por WhatsApp
+  </a>
+  <p style="white-space:nowrap; margin-top:1.2rem;">¡Permitinos ayudarte y acompañarte a cumplir tus objetivos sin sufrir el proceso!</p>
+</section>
+
+<!-- QUIÉNES SOMOS -->
+<section id="quienes">
+  <div class="quienes-text reveal">
+    <h2>LADO B NUTRICIÓN</h2>
+    <p>Somos un centro de nutrición ubicado en Palermo. Trabajamos con tecnología <strong>InBody</strong>, que nos permite evaluar tu composición corporal de forma detallada y así poder hacer un seguimiento real y preciso de tus avances.</p>
+    <p>No creemos en dietas restrictivas ni en soluciones rápidas o temporales. Nuestro enfoque se basa en la <strong>alimentación consciente</strong>, ayudándote a construir hábitos saludables y sostenibles en el tiempo, sin pasar hambre y sin "sufrir" el proceso.</p>
+    <p>Nos especializamos en <strong>sobrepeso leve y obesidad</strong>, <strong>nutrición deportiva</strong>, <strong>alimentación vegana y vegetariana</strong>, entre otras áreas. Nuestro objetivo es acompañarte de manera integral para que logres cambios reales, duraderos y que se adapten a vos.</p>
+  </div>
+  <div class="quienes-gallery reveal">
+    <div class="gallery-main">
+      <img src="images/consul01.jpg" alt="Consultorio Lado B Nutrición">
+    </div>
+    <div class="gallery-side">
+      <img src="images/consul02.jpg" alt="Consultorio Lado B Nutrición">
+      <img src="images/consul03.jpg" alt="Consultorio Lado B Nutrición">
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<section id="stats">
+  <div class="stats-grid">
+    <div class="stat-item reveal">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+      <span class="stat-number"><strong>+</strong> de 8 años</span>
+      <span class="stat-label">atendiendo</span>
+    </div>
+    <div class="stat-item reveal">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+      <span class="stat-number"><strong>+</strong> de 3.000</span>
+      <span class="stat-label">pacientes atendidos</span>
+    </div>
+    <div class="stat-item reveal">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+      <span class="stat-number"><strong>Planes</strong></span>
+      <span class="stat-label">100% personalizados</span>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIOS -->
+<section id="testimonios">
+  <h2 class="section-title reveal">Testimonios de quienes nos eligen</h2>
+  <p class="reveal" style="text-align:center; font-size:.8rem; letter-spacing:.08em; color:#b08070; margin-top:-2.8rem; margin-bottom:2.5rem; text-transform:uppercase;">— Reseñas Google Maps —</p>
+  <div class="testimonial-slider reveal">
+    <div class="testimonial active">
+      <div class="testimonial-title">"Mega recomendado"</div>
+      <p class="testimonial-text">Todo súper profesional y la mejor calidad. Nutricionistas dedicadas y específicas a la necesidades de cada paciente. Mega recomendado!</p>
+      <div class="stars">★★★★★</div>
+      <div class="testimonial-author"><span class="author-name">Tatiana Paladini</span></div>
+    </div>
+    <div class="testimonial">
+      <div class="testimonial-title">"100% recomendable"</div>
+      <p class="testimonial-text">100% recomendable. Grandes profesionales y muy atentas en todo. Cambié mi alimentación rotundamente y no solo mejoré mucho físicamente, me siento mejor y con mucha más energía.</p>
+      <div class="stars">★★★★★</div>
+      <div class="testimonial-author"><span class="author-name">Agustín Maurette</span></div>
+    </div>
+    <div class="testimonial">
+      <div class="testimonial-title">"Muy profesionales"</div>
+      <p class="testimonial-text">Mega recomiendo a las chicas de Lado B nutrición. Me sentí muy cómoda en la consulta, como no me ha pasado con otros profesionales. Muy profesionales y disponibles. Gracias!!</p>
+      <div class="stars">★★★★★</div>
+      <div class="testimonial-author"><span class="author-name">María Clara Bori</span></div>
+    </div>
+    <div class="testimonial">
+      <div class="testimonial-title">"Súper recomendado"</div>
+      <p class="testimonial-text">Súper recomendado Lado B, ¡Fran y Carla son unas genias! Voy hace más de tres años y siempre me guían para tener una dieta saludable y acorde con mis objetivos de cada momento acompañándome y saldando todas mis dudas. 🤗</p>
+      <div class="stars">★★★★★</div>
+      <div class="testimonial-author"><span class="author-name">Malena Adandía</span></div>
+    </div>
+    <div class="testimonial">
+      <div class="testimonial-title">"Muy profesionales"</div>
+      <p class="testimonial-text">Muy profesionales, te hacen sentir cómodo con todas tus dudas, te dan opciones de marcas saludables para los antojos, la tecnología con la que manejan tu plan de tratamiento hace que sea completamente confiable tus resultados a fin de mes!</p>
+      <div class="stars">★★★★★</div>
+      <div class="testimonial-author"><span class="author-name">Esteban Aguilar</span></div>
+    </div>
+    <div class="testimonial">
+      <div class="testimonial-title">"Súper profesionales"</div>
+      <p class="testimonial-text">Las nutris son súper profesionales! Trabajan con el método In-Body que permite hacer un seguimiento exhaustivo de la masa muscular y la grasa. Además tienen un acompañamiento cálido y humano. Súper recomiendo este lugar y a las nutris 🤗</p>
+      <div class="stars">★★★★★</div>
+      <div class="testimonial-author"><span class="author-name">Evangelina Rosa</span></div>
+    </div>
+    <div class="testimonial">
+      <div class="testimonial-title">"Excelentes profesionales"</div>
+      <p class="testimonial-text">Excelentes profesionales!! Fran me acompaña ya hace un tiempo, escuchando y aconsejando cómo llegar a mi objetivo teniendo en cuenta mis expectativas, realidad y posibilidades. Super recomendable!</p>
+      <div class="stars">★★★★★</div>
+      <div class="testimonial-author"><span class="author-name">Nicolás Benini</span></div>
+    </div>
+    <div class="testimonial">
+      <div class="testimonial-title">"Ganar en salud"</div>
+      <p class="testimonial-text">Son unas genias! Son todo lo que está bien y más. Lugar súper cálido, ellas amorosas, se toman el tiempo necesario para explicar y aclarar dudas. Me ayudaron a GANAR EN SALUD. Ya son parte de mi equipo de salud, así lo siento. Súper recomendables.</p>
+      <div class="stars">★★★★★</div>
+      <div class="testimonial-author"><span class="author-name">Miguel Ángel Gutierrez</span></div>
+    </div>
+    <div class="testimonial">
+      <div class="testimonial-title">"Mega recomendable"</div>
+      <p class="testimonial-text">Gran lugar, grandes profesionales y divinas las nutris. Me ayudaron a bajar de peso y aprender a comer sobre todo. Gracias Carla y Francisca. Mega recomendable.</p>
+      <div class="stars">★★★★★</div>
+      <div class="testimonial-author"><span class="author-name">Rodrigo Vildoza</span></div>
+    </div>
+    <div class="slider-nav">
+      <button class="slider-btn" onclick="changeSlide(-1)">←</button>
+      <div class="slider-dots" id="dots"></div>
+      <button class="slider-btn" onclick="changeSlide(1)">→</button>
+    </div>
+  </div>
+</section>
+
+<!-- DÓNDE ESTAMOS -->
+<section id="donde" style="padding:0;">
+  <div class="donde-grid">
+    <div class="donde-info reveal">
+      <h2 style="font-family:'Playfair Display',serif; font-size:clamp(1.8rem,3vw,2.5rem); color:var(--white); margin-bottom:2.5rem; letter-spacing:.02em; text-align:left;">Encontranos</h2>
+      <div class="donde-links">
+        <a class="donde-link" href="https://maps.google.com/?q=Charcas+3331+Palermo+Buenos+Aires" target="_blank">
+          <svg viewBox="0 0 24 24" fill="#EA4335"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+          <span>Charcas 3331, Palermo</span>
+        </a>
+        <a class="donde-link" href="https://wa.me/5491159113151?text=Hola%21+Me+gustar%C3%ADa+tener+una+consulta%21" target="_blank" onclick="gtag_report_conversion(this.href); return false;">
+          <svg viewBox="0 0 24 24" fill="#25d366"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.125.554 4.122 1.528 5.855L.057 23.882l6.233-1.635A11.945 11.945 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.006-1.368l-.36-.213-3.7.971.987-3.608-.234-.371A9.818 9.818 0 1112 21.818z"/></svg>
+          <span>WhatsApp</span>
+        </a>
+        <a class="donde-link" href="https://www.instagram.com/ladobnutricion" target="_blank">
+          <svg viewBox="0 0 24 24"><defs><radialGradient id="igGrad" cx="30%" cy="107%" r="150%"><stop offset="0%" stop-color="#fdf497"/><stop offset="5%" stop-color="#fdf497"/><stop offset="45%" stop-color="#fd5949"/><stop offset="60%" stop-color="#d6249f"/><stop offset="90%" stop-color="#285AEB"/></radialGradient></defs><path fill="url(#igGrad)" d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+          <span>Instagram</span>
+        </a>
+      </div>
+    </div>
+    <div class="donde-map reveal">
+      <iframe
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3284.510799836006!2d-58.41531442445894!3d-34.59124287295883!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95bcca86b2b95555%3A0x29b5a1bc3aeeceb!2sCharcas%203331%2C%20C1425BMQ%20Cdad.%20Aut%C3%B3noma%20de%20Buenos%20Aires!5e0!3m2!1ses!2sar!4v1774017013957!5m2!1ses!2sar"
+        allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+      </iframe>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>Lado B Nutrición © 2016 - 2026</p>
+</footer>
+
+<!-- WA FLOAT -->
+<a class="wa-float" href="https://wa.me/5491159113151?text=Hola%21+Me+gustar%C3%ADa+tener+una+consulta%21" target="_blank" onclick="gtag_report_conversion(this.href); return false;" aria-label="WhatsApp">
+  <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.125.554 4.122 1.528 5.855L.057 23.882l6.233-1.635A11.945 11.945 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.006-1.368l-.36-.213-3.7.971.987-3.608-.234-.371A9.818 9.818 0 1112 21.818z"/></svg>
+</a>
+
+<script>
+gsap.registerPlugin(ScrollTrigger);
+
+// ── HERO ENTRANCE ──
+const tl = gsap.timeline({ delay: .2 });
+tl.to('.hero-content', { opacity: 1, duration: .1 })
+  .from('.hero-logo-img', { y: 40, opacity: 0, duration: 1, ease: 'power3.out' })
+  .to('.hero-tagline', { opacity: 1, y: 0, duration: .8, ease: 'power2.out' }, '-=.4')
+  .to('.hero-cta', { opacity: 1, y: 0, duration: .8, ease: 'power2.out' }, '-=.5')
+  .to('.hero-scroll', { opacity: .7, duration: .8 }, '-=.3');
+
+// ── NAV scroll ──
+const navbar = document.getElementById('navbar');
+window.addEventListener('scroll', () => {
+  navbar.classList.toggle('scrolled', window.scrollY > 20);
+});
+
+// ── SCROLL REVEAL con GSAP ──
+gsap.utils.toArray('.reveal').forEach((el, i) => {
+  gsap.from(el, {
+    scrollTrigger: { trigger: el, start: 'top 88%', toggleActions: 'play none none none' },
+    y: 40, opacity: 0, duration: .9, ease: 'power2.out', delay: (i % 3) * .1
+  });
+  el.classList.add('visible');
+});
+
+// ── CARDS stagger ──
+gsap.utils.toArray('.card').forEach((card, i) => {
+  gsap.from(card, {
+    scrollTrigger: { trigger: card, start: 'top 90%' },
+    y: 50, opacity: 0, duration: .8, ease: 'power2.out', delay: i * .15
+  });
+});
+
+// ── GALERÍA stagger ──
+gsap.from('.gallery-main', {
+  scrollTrigger: { trigger: '.quienes-gallery', start: 'top 85%' },
+  x: -50, opacity: 0, duration: 1, ease: 'power3.out'
+});
+gsap.utils.toArray('.gallery-side img').forEach((img, i) => {
+  gsap.from(img, {
+    scrollTrigger: { trigger: '.quienes-gallery', start: 'top 85%' },
+    x: 50, opacity: 0, duration: .9, ease: 'power3.out', delay: .2 + i * .15
+  });
+});
+
+// ── STATS COUNTERS ──
+function animateCounter(el, target, suffix) {
+  gsap.fromTo({ val: 0 }, { val: target }, {
+    scrollTrigger: { trigger: el, start: 'top 85%', once: true },
+    duration: 2, ease: 'power2.out',
+    onUpdate: function() {
+      el.innerHTML = (this.targets()[0].val >= 1000
+        ? Math.floor(this.targets()[0].val).toLocaleString('es-AR')
+        : Math.floor(this.targets()[0].val)) + suffix;
+    }
+  });
+}
+
+ScrollTrigger.create({
+  trigger: '#stats',
+  start: 'top 85%',
+  once: true,
+  onEnter: () => {
+    const nums = document.querySelectorAll('.stat-number');
+    // +de 8 años
+    const n0 = nums[0];
+    gsap.fromTo({ v: 0 }, { v: 8 }, {
+      duration: 1.8, ease: 'power2.out',
+      onUpdate: function() { n0.innerHTML = '<strong>+</strong> de ' + Math.floor(this.targets()[0].v) + ' años'; }
+    });
+    // +de 3.000
+    const n1 = nums[1];
+    gsap.fromTo({ v: 0 }, { v: 3000 }, {
+      duration: 2.2, ease: 'power2.out',
+      onUpdate: function() { n1.innerHTML = '<strong>+</strong> de ' + Math.floor(this.targets()[0].v).toLocaleString('es-AR'); }
+    });
+  }
+});
+
+// ── STAT ITEMS stagger ──
+gsap.utils.toArray('.stat-item').forEach((item, i) => {
+  gsap.from(item, {
+    scrollTrigger: { trigger: '#stats', start: 'top 85%' },
+    y: 30, opacity: 0, duration: .8, ease: 'power2.out', delay: i * .2
+  });
+});
+
+// ── MOBILE MENU ──
+function toggleMenu() {
+  document.getElementById('navLinks').classList.toggle('open');
+}
+document.querySelectorAll('.nav-links a').forEach(link => {
+  link.addEventListener('click', () => {
+    document.getElementById('navLinks').classList.remove('open');
+  });
+});
+
+// ── VIDEO ──
+function playVideo() {
+  const wrapper = document.getElementById('videoWrapper');
+  const embed = document.getElementById('videoEmbed');
+  const thumb = wrapper.querySelector('.video-thumb');
+  const btn = wrapper.querySelector('.play-btn');
+  embed.src = 'https://www.youtube.com/embed/uQ2S4Zc5KO0?autoplay=1';
+  embed.style.display = 'block';
+  thumb.style.display = 'none';
+  btn.style.display = 'none';
+  wrapper.onclick = null;
+}
+
+// ── TESTIMONIOS SLIDER ──
+let current = 0;
+const slides = document.querySelectorAll('.testimonial');
+const dotsContainer = document.getElementById('dots');
+
+slides.forEach((_, i) => {
+  const d = document.createElement('div');
+  d.className = 'dot' + (i === 0 ? ' active' : '');
+  d.onclick = () => goTo(i);
+  dotsContainer.appendChild(d);
+});
+
+function goTo(n) {
+  slides[current].classList.remove('active');
+  document.querySelectorAll('.dot')[current].classList.remove('active');
+  current = (n + slides.length) % slides.length;
+  slides[current].classList.add('active');
+  document.querySelectorAll('.dot')[current].classList.add('active');
+}
+
+function changeSlide(dir) { goTo(current + dir); }
+</script>
+</body>
+</html>
